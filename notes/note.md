@@ -68,7 +68,17 @@ if __name__ == "__main__":
 
 ## Step 3: label training images
 
-1. install
+1. install `labelImg` library
+
+   `pip install labelImg`
+
+2. call app `labelImg`
+
+   `labelImg`
+
+   label the picture
+
+---
 
 ---
 
