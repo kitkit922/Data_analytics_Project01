@@ -5,6 +5,7 @@
   - [Step 2: download training images](#step-2-download-training-images)
   - [Step 3: label training images](#step-3-label-training-images)
   - [Step 4: Configuration: YOLOv8](#step-4-configuration-yolov8)
+  - [Step 5: Predict](#step-5-predict)
 
 ---
 
@@ -159,10 +160,44 @@ if __name__ == "__main__":
 8. Run training
 
 - `yolo task=detect mode=train epochs=100 data=data_custom.yaml model=yolov8m.pt imgsz=640`
+
   - `epochs`: the total number of iterations of all the training data in one cycle for training the machine learning model.
   - `data`: the configuration file. The path of the file is the same as the current directory to run command.
   - `model`: the model used in training. When running training, the model will download.
   - `imgsz`: image size
+
+- Yolo will create a `runs` folder after execute the command:
+
+  - runs/
+    - train/
+      - weights/
+        - last.pt: dataset
+      - images showing performences.
+
+  ![train](./pic/run01.png)
+
+---
+
+## Step 5: Predict
+
+- `yolo task=detect mode=predict model=<data_set.pt> show=true conf=0.5 source=<img_filename>`
+
+  - `model`: the last.pt file in train/weigths/ folder
+  - `source`: the image file to be estimated
+
+- example:
+
+  - `yolo task=detect mode=predict model=ttc_bus.pt show=true conf=0.5 source=ttc_bus_01.jpeg save=true`
+
+- Yolo will carry out the prediction in the runs folder:
+
+  - runs/
+    - predict/
+      - the estimated image file, in which the object will be cropped.
+
+  ![predict_01](./pic/predict01.png)
+
+  ![predict_02](./pic/predict02.png)
 
 ---
 

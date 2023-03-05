@@ -128,4 +128,16 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+.vscode
 .vscode/
+
+# yolo
+yolo/train/*
+yolo/train/*.cache
+yolo/val/*
+yolo/val/*.cache
+yolo/*.pt
+*.pot
+*.cache
+runs/
+
