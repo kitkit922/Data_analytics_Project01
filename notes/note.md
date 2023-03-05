@@ -1,13 +1,14 @@
 # Tech Note
 
 - [Tech Note](#tech-note)
-  - [Steps 1: Virtual Environment](#steps-1-virtual-environment)
-  - [Steps 2: download training images](#steps-2-download-training-images)
+  - [Step 1: Virtual Environment](#step-1-virtual-environment)
+  - [Step 2: download training images](#step-2-download-training-images)
   - [Step 3: label training images](#step-3-label-training-images)
+  - [Step 4: Configuration: YOLOv8](#step-4-configuration-yolov8)
 
 ---
 
-## Steps 1: Virtual Environment
+## Step 1: Virtual Environment
 
 1. Create virtual environment
 
@@ -21,7 +22,7 @@
 
 ---
 
-## Steps 2: download training images
+## Step 2: download training images
 
 1. update pip
 
@@ -79,6 +80,89 @@ if __name__ == "__main__":
    label the picture
 
 ---
+
+## Step 4: Configuration: YOLOv8
+
+1. create file structure:
+
+   - yolo
+     - train
+       - images: copy all labeled images
+       - labels: copy all txt files
+     - val
+       - images: select 10 images
+       - labels: copy txt files of the above images
+
+2. install `ultralycts`
+
+   `pip install ultralytics`
+
+3. verification of `ultralycts`
+
+   - cmd: `python`
+   - python code
+
+   ```py
+   import torch
+   torch.__version__ # 1.13.1+cpu
+   ```
+
+4. install `pytorch` for GPU
+
+   - website: https://pytorch.org/get-started/locally/
+     - Build: Stable
+     - OS: Windows
+     - Package: pip
+     - Language: Python
+     - Platform: CUDA
+   - get the pip command
+
+5. verification of `pytorch`
+
+   - cmd: `python`
+   - python code
+
+   ```py
+   import torch
+   torch.__version__ # should be CUDA
+   torch.cuda.is_available() # true
+   ```
+
+6. create configuration `.yaml` file
+
+   ```yaml
+   # paths of train and val directories
+
+   train: ..\yolo\train
+   val: ..\yolo\val
+
+   # number of classes
+   nc: 1
+
+   # names of classes
+   names: ["ttc_bus"]
+   ```
+
+7. YOLO Parameters
+
+- website: https://github.com/ultralytics/ultralytics
+  - Models
+    - there are 5 models
+    - mAPva - Speed CPU ONNX: the higher, the slower;
+    - recommend: A100 GPU
+    - this machine
+      - cpu
+      - size: 640
+      - mAP: 50.2
+      - model: `yolov8m.pt`
+
+8. Run training
+
+- `yolo task=detect mode=train epochs=100 data=data_custom.yaml model=yolov8m.pt imgsz=640`
+  - `epochs`: the total number of iterations of all the training data in one cycle for training the machine learning model.
+  - `data`: the configuration file. The path of the file is the same as the current directory to run command.
+  - `model`: the model used in training. When running training, the model will download.
+  - `imgsz`: image size
 
 ---
 

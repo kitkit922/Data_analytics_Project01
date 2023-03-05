@@ -1,0 +1,10 @@
+# paths of train and val directories
+
+train: C:\Users\simon\iCloudDrive\Downloads\Projects\Project_Apollo\Pro_Humber\Semester02\ITE-5201-Introduction_to_Data_Analytics\Humber_DA_Lab\Project01\yolo\train
+val: C:\Users\simon\iCloudDrive\Downloads\Projects\Project_Apollo\Pro_Humber\Semester02\ITE-5201-Introduction_to_Data_Analytics\Humber_DA_Lab\Project01\yolo\val
+
+# number of classes
+nc: 1
+
+# names of classes
+names: ["ttc_bus"]
