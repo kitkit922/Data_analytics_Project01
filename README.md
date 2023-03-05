@@ -10,7 +10,7 @@ This is a project of the course ITE-5201-Introduction_to_Data_Analytics.
   
       - [x] main.py:
       - [x] download training images, using `simple_image_download`
-      - [ ] label training images, using `labelImg`
+      - [x] label training images, using `labelImg`
       - [ ] train dataset, using `yolo`
       - [ ] predict
   
